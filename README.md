@@ -4,7 +4,10 @@
 
 # Commands
 
-   git clone https://github.com/stvansolano/dotnet-docker-playground.git
-   cd dotnet-docker-playground/.devcontainer
-   docker build -t dev:latest -f Dockerfile .
-   docker run -p 81:5001 -t dev:latest -d
+      git clone https://github.com/stvansolano/dotnet-docker-playground.gi
+
+      cd dotnet-docker-playground/.devcontainer
+      
+      docker build -t dev:latest -f Dockerfile .
+      
+      docker run -p 80:5001 -t dev:latest -d
