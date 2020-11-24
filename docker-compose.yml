@@ -9,9 +9,10 @@ services:
       - 8081:80
       - 5000:5000
       - 5001:5001
-  
-  play-with-docker:
-    container_name: play-with-docker
-    image: docker/getting-started:pwd
-    ports:
       - 80:80
+      
+  #play-with-docker:
+  #  container_name: play-with-docker
+  #  image: docker/getting-started:pwd
+  #  ports:
+  #    - 80:80
