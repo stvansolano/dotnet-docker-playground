@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  
+  dotnet:
+    container_name: dotnet-dev
+    image: stvansolano/dotnet-codespace:3.1
+    ports:
+      - 8081:80
+      - 5000:5000
+      - 5001:5001
+  
+  play-with-docker:
+    container_name: play-with-docker
+    image: docker/getting-started:pwd
+    ports:
+      - 80:80
