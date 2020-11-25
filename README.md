@@ -14,6 +14,8 @@
       
       cd home
 
+      dotnet --version
+
       dotnet new mvc --name Frontend
 
       cd Frontend
