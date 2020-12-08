@@ -26,6 +26,7 @@ namespace WebServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseFileServer();
             app.UseStaticFiles();
             app.UseDefaultFiles();
         }
