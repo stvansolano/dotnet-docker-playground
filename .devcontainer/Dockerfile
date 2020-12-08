@@ -1,7 +1,7 @@
 # Note: You can use any Debian/Ubuntu based image you want. 
 #FROM mcr.microsoft.com/vscode/devcontainers/base:0-buster
-ARG VARIANT=3.1
-FROM mcr.microsoft.com/vscode/devcontainers/dotnetcore:${VARIANT}
+ARG VARIANT=5.0
+FROM mcr.microsoft.com/vscode/devcontainers/dotnet:${VARIANT}
 
 # Options
 ARG INSTALL_ZSH="true"
