@@ -28,7 +28,6 @@
 
       cd dotnet-docker-playground/.devcontainer
       
-      docker build -t local-dev:latest -f Dockerfile . 
+      docker build -t playground:latest -f Dockerfile . 
 
-      docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 local-dev:latest
-
+      docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 -v $(pwd)/samples:/src playground:latest
