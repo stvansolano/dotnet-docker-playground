@@ -30,5 +30,5 @@
       
       docker build -t local-dev:latest -f Dockerfile . 
 
-      > Back to Step 1!
+      docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 local-dev:latest
 
