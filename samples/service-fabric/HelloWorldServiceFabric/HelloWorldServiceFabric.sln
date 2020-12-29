@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "HelloWorldServiceFabric", "HelloWorldServiceFabric\HelloWorldServiceFabric.sfproj", "{70F1653B-1C27-4C84-8671-3023542FF8FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{625CB6FF-704C-40D5-B035-0838C1E8488F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{625CB6FF-704C-40D5-B035-0838C1E8488F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatelessDotNet", "StatelessDotNet\StatelessDotNet.csproj", "{750F66DC-74D6-4285-A224-4C84D3C5F08E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{625CB6FF-704C-40D5-B035-0838C1E8488F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{625CB6FF-704C-40D5-B035-0838C1E8488F}.Release|x64.ActiveCfg = Release|Any CPU
 		{625CB6FF-704C-40D5-B035-0838C1E8488F}.Release|x64.Build.0 = Release|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Debug|x64.Build.0 = Debug|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Release|x64.ActiveCfg = Release|Any CPU
+		{750F66DC-74D6-4285-A224-4C84D3C5F08E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

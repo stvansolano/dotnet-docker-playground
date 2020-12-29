@@ -33,6 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\StatelessDotNet\StatelessDotNet.csproj">
+      <ServiceLaunchUrl>https://{MachineName}:{ServicePort}/weatherforecast</ServiceLaunchUrl>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>
