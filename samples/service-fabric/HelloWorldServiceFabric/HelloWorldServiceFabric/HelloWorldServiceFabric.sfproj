@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\ServiceB\ServiceB.csproj" />
     <ProjectReference Include="..\StatelessDotNet\StatelessDotNet.csproj">
       <ServiceLaunchUrl>https://{MachineName}:{ServicePort}/weatherforecast</ServiceLaunchUrl>
     </ProjectReference>
