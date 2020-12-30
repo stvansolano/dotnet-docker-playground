@@ -29,6 +29,16 @@ namespace WebServer
             app.UseFileServer();
             app.UseStaticFiles();
             app.UseDefaultFiles();
+
+            app.UseEndpoints(endpoints => {
+
+                endpoints.MapGet("/api/products", async context => {
+
+                    await context.Response.WriteAsJsonAsync<object[]>(new object[]{
+                        1, 2, 3
+                    });
+                });
+            });
         }
     }
 }
