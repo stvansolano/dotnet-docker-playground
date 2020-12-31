@@ -10,7 +10,7 @@ using DotNet_Frontend.Models;
 
 namespace DotNet_Frontend.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
