@@ -1,0 +1,34 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  dotnet-backend:
+    image: dotnet-backend
+    build:
+      context: .
+      dockerfile: samples/dotnet-backend/Dockerfile
+    command: >
+      echo 'Backend built'
+    ports:
+      - 5000:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+
+  dotnet-stateful-service:
+    image: dotnet-stateful-service
+    build:
+      context: .
+      dockerfile: samples/dotnet-redis/dotnet-stateful-service/Dockerfile
+    command: >
+      echo '.NET Stateuful service built'
+    ports:
+      - 5001:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

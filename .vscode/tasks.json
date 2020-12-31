@@ -2,12 +2,25 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build-webserver",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
                 "${workspaceFolder}/samples/dotnet-webserver/WebServer.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        
+        {
+            "label": "build-backend",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/samples/dotnet-backend/Dotnet-Backend.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
