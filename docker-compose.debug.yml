@@ -17,3 +17,18 @@ services:
       - ASPNETCORE_URLS=http://+:80
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
+
+  dotnet-stateful-service:
+    image: dotnet-stateful-service
+    build:
+      context: .
+      dockerfile: samples/dotnet-redis/dotnet-stateful-service/Dockerfile
+    command: >
+      echo '.NET Stateuful service built'
+    ports:
+      - 5001:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
