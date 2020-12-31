@@ -47,7 +47,14 @@ namespace Dotnet_Backend
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/", context => {
+
+                    context.Response.Redirect("/api/hello");
+                    return Task.CompletedTask;
+                });
+
                 endpoints.MapGet("api/hello", async context => {
+                    
                     await context.Response.WriteAsJsonAsync<object[]>(
                         new object[]{
                         "Hello",
