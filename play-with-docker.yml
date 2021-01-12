@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  
+  play-with-docker:
+    container_name: play-with-docker
+    image: docker/getting-started:pwd
+    ports:
+      - 80:80

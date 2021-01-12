@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+
+  adventure-works.db:
+    image: stvansolano/adventure_works:latest
+    environment:
+      SA_PASSWORD: "Password.123"
+      ACCEPT_EULA: "Y"
+    ports:
+    - "1433:1433"
+
+#  mongo:
+#    image: mongo:4.0.4
+#    container_name: mongo
+#    ports:
+#    - "27017:27017"
