@@ -1,3 +1,4 @@
+# docker-compose -f data-playground.yml up -d
 version: "3.4"
 services:
 
@@ -18,8 +19,12 @@ services:
     depends_on:
     - adventure-works-db
 
-#  mongo:
-#    image: mongo:4.0.4
-#    container_name: mongo
-#    ports:
-#    - "27017:27017"
+  redis:
+    image: redis:4.0.8-alpine
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: ingress
+    volumes:
+      - "~/data/${STACK_NAME}/redis:/data"

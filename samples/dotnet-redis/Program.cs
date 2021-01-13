@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StackExchange.Redis;
 
 namespace Dotnet_Backend
 {
@@ -58,7 +59,27 @@ namespace Dotnet_Backend
                     await context.Response.WriteAsJsonAsync<object[]>(
                         new object[]{
                         "Hello",
-                        "World"
+                        "World",
+                        "Redis!"
+                    });
+                });
+
+                endpoints.MapGet("/api/{topic:alpha}", async context =>
+                {
+                    var topic = (string)context.Request.RouteValues["topic"];
+
+                    if (string.IsNullOrEmpty(topic)){
+                        context.Response.StatusCode = (int) System.Net.HttpStatusCode.BadRequest;
+                        return;
+                    }
+                    using ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("Redis"));
+                    IDatabase db = redis.GetDatabase();
+
+                    string value = await db.StringGetAsync(topic);
+                    await context.Response.WriteAsJsonAsync<object>(
+                        new {
+                            topic = topic,
+                            value = value
                     });
                 });
             });
