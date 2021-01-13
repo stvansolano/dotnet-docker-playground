@@ -39,8 +39,19 @@
 
       docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 -v $(pwd)/samples:/src playground:latest
 
-### Linux/SQL Server commands 
+### 3. Data playground
+
+      cd ~/dotnet-docker-playground/
+      
+      docker build -t dotnet-sql-server:latest -f samples/dotnet-sql-server/Dockerfile .
+
+      docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 dotnet-sql-server:latest
+
+## Linux/SQL Server commands 
+
+```
 cat /etc/*release
 export PATH="$PATH:/opt/mssql-tools/bin"
 sqlcmd -S localhost -U SA -P Password.123
 select getdate();
+```

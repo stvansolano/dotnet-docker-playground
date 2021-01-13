@@ -7,10 +7,10 @@ EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["samples/dotnet-backend/Dotnet-Backend.csproj", "samples/dotnet-backend/"]
-RUN dotnet restore "samples/dotnet-backend/Dotnet-Backend.csproj"
+COPY ["samples/dotnet-sql-server/Dotnet-Backend.csproj", "samples/dotnet-sql-server/"]
+RUN dotnet restore "samples/dotnet-sql-server/Dotnet-Backend.csproj"
 COPY . .
-WORKDIR "/src/samples/dotnet-backend"
+WORKDIR "/src/samples/dotnet-sql-server"
 RUN dotnet build "Dotnet-Backend.csproj" -c Release -o /app/build
 
 FROM build AS publish
