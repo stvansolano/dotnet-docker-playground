@@ -41,17 +41,40 @@
 
 ### 3. Data playground
 
+      git clone https://github.com/stvansolano/dotnet-docker-playground.git
+
       cd ~/dotnet-docker-playground/
       
-      docker build -t dotnet-sql-server:latest -f samples/dotnet-sql-server/Dockerfile .
+      docker-compose -f data-playground.yml up -d 
 
-      docker run -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080 dotnet-sql-server:latest
 
-## Linux/SQL Server commands 
+> Linux/SQL Server commands:
+      ```
+      cat /etc/*release
+      export PATH="$PATH:/opt/mssql-tools/bin"
+      sqlcmd -S localhost -U SA -P Password.123
+      select getdate();
+      ```
+
+## Docker commands
 
 ```
-cat /etc/*release
-export PATH="$PATH:/opt/mssql-tools/bin"
-sqlcmd -S localhost -U SA -P Password.123
-select getdate();
+docker ps
+docker stop
+docker logs
+```
+
+Build & publish 
+
+```
+      1. Run 
+            docker login --username stvansolano
+      2. Pasted obtained secret
+            71d70601-4232-4d76-a00e-c8f05958098b
+      3. Build the local image
+            cd samples/sql-server
+            docker build --rm -t stvansolano/adventure-works:latest .
+      4. Push to Docker Hub
+            docker push stvansolano/adventure-works:latest
+      5. Delete from your Docker Hub account
 ```

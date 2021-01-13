@@ -1,13 +1,22 @@
 version: "3.4"
 services:
 
-  adventure-works.db:
+  adventure-works-db:
     image: stvansolano/adventure_works:latest
     environment:
       SA_PASSWORD: "Password.123"
       ACCEPT_EULA: "Y"
+
+  dotnet-sql-server:
+    build:
+      context: .
+      dockerfile: samples/dotnet-sql-server/Dockerfile
     ports:
-    - "1433:1433"
+    - "80:80"
+    links:
+    - adventure-works-db
+    depends_on:
+    - adventure-works-db
 
 #  mongo:
 #    image: mongo:4.0.4

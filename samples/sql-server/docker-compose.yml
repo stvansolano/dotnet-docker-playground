@@ -1,15 +1,24 @@
 version: "3.4"
 services:
 
-  adventure-works.db:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+  adventure-works-db:
+    #image: stvansolano/adventure-works:latest
+    build:
+      context: .
+      dockerfile: samples/dotnet-sql-server/Dockerfile
     environment:
       SA_PASSWORD: "Password.123"
       ACCEPT_EULA: "Y"
     ports:
     - "1433:1433"
 
-  mongo:
-    image: mongo:4.0.4
-    ports:
-    - "27017:27017"
+# 1. Run 
+  #  docker login --username stvansolano
+# 2. Pasted obtained secret
+  # 71d70601-4232-4d76-a00e-c8f05958098b
+# 3. Build the local image
+  # cd samples/sql-server
+  # docker build --rm -t stvansolano/adventure-works:latest .
+# 4. Push to Docker Hub
+  # docker push stvansolano/adventure-works:latest
+# 5. Delete from your Docker Hub account

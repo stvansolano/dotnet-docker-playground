@@ -35,18 +35,9 @@ namespace Dotnet_Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) 
         {        
-            services.AddDbContext<AdventureWorksDbContext>(builder =>
-            {
-
-                //var options = builder.UseInMemoryDatabase("FakeDatabase");
-
-                var dbOptions = new DbContextOptionsBuilder<AdventureWorksDbContext>()
-                                   //.UseInMemoryDatabase("FakeDatabase").Options;
-                                   .UseSqlServer(Configuration.GetConnectionString("AdventureWorks")).Options;
-
-                using var db = new AdventureWorksDbContext(dbOptions);
-                db.Database.EnsureCreated();
-            });
+            services.AddDbContext<AdventureWorksDbContext>(
+                options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AdventureWorks")));
 
             services.AddScoped<AdventureWorksDbContext>();
         }
@@ -73,7 +64,6 @@ namespace Dotnet_Backend
 
                 endpoints.MapGet("api/hello", async context =>
                 {
-
                     await context.Response.WriteAsJsonAsync<object[]>(
                         new object[]{
                         "Hello",
@@ -86,7 +76,12 @@ namespace Dotnet_Backend
                     var dbContext = context.Request.HttpContext.RequestServices.GetRequiredService<AdventureWorksDbContext>();
 
                     await context.Response.WriteAsJsonAsync<object[]>(
-                        dbContext.Products.ToArray()
+                        dbContext.Products.Select(p => 
+                            new { 
+                                Id = p.ProductId, 
+                                Name = p.Name, 
+                                ListPrice = p.ListPrice 
+                            }).ToArray()
                     );
                 });
             });
