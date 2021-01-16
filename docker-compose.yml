@@ -46,11 +46,11 @@ services:
   #### Data Containers
 
   adventure-works-db:
-    image: stvansolano/adventure_works:latest
+    image: stvansolano/adventure-works:latest
     environment:
       SA_PASSWORD: "Password.123"
       ACCEPT_EULA: "Y"
-
+      
   redis:
     image: redis:4.0.8-alpine
     ports:
