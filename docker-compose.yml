@@ -2,17 +2,71 @@ version: '3.4'
 
 services:
   
+  play-with-docker:
+    container_name: play-with-docker
+    image: docker/getting-started:pwd
+    ports:
+      - 8080:80
+
   dotnet:
     container_name: dotnet-dev
     image: stvansolano/dotnet-codespace:3.1
     ports:
-      - 8081:80
       - 5000:5000
       - 5001:5001
-      - 80:80
-      
-  #play-with-docker:
-  #  container_name: play-with-docker
-  #  image: docker/getting-started:pwd
+      - 8081:80
+
+  dotnet-webserver:
+    build:
+      context: .
+      dockerfile: samples/dotnet-webserver/Dockerfile
+    ports:
+    - "8082:80"
+    environment:
+      -  ASPNETCORE_URLS=http://+:5000
+  
+  dotnet-backend:
+    build:
+      context: .
+      dockerfile: samples/dotnet-backend/Dockerfile
+    ports:
+    - "8083:80"
+
+  dotnet-sql-server:
+    build:
+      context: .
+      dockerfile: samples/dotnet-sql-server/Dockerfile
+    ports:
+    - "8084:80"
+    links:
+    - adventure-works-db
+    depends_on:
+    - adventure-works-db
+
+  #### Data Containers
+
+  adventure-works-db:
+    image: stvansolano/adventure_works:latest
+    environment:
+      SA_PASSWORD: "Password.123"
+      ACCEPT_EULA: "Y"
+
+  redis:
+    image: redis:4.0.8-alpine
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: ingress
+    volumes:
+      - "~/data/${STACK_NAME}/redis:/data"
+
+  #redis-insights:
+  #  image:
+  #    redislabs/redisinsight:latest
   #  ports:
-  #    - 80:80
+  #    - "6380:8001" 
+  #  volumes: 
+  #    - "redisinsight:/db" 
+  
+# docker-compose up -d
