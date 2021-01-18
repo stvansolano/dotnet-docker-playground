@@ -47,6 +47,11 @@
       
       docker-compose -f data-playground.yml up -d 
 
+      clear
+
+      docker ps
+
+      docker exec -it [container-id] bash
 
 > Linux/SQL Server commands:
       ```
