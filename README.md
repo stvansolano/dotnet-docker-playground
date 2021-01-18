@@ -83,3 +83,29 @@ Build & publish
             docker push stvansolano/adventure-works:latest
       5. Delete from your Docker Hub account
 ```
+
+### Run it from Code-Servrer
+
+1) Run the container
+
+```
+docker run --name code-server \
+  -p 8080:8080 \
+  -p 8443:8443 \
+  -v "$PWD/samples/:/~/root/samples" \
+  -u "$(id -u):$(id -g)" \
+  -e "DOCKER_USER=$USER" \
+  -d \
+  stvansolano/code-server:latest
+```
+
+2) Attach bash
+`docker exec -it code-server bash`
+
+3) Get the password and run it!
+
+`cat ~/.config/code-server/config.yaml`
+
+Optionally, build the image
+
+`docker build -f ".devcontainer/code-server.Dockerfile" -t stvansolano/code-server-docker:latest .`
