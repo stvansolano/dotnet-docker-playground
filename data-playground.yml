@@ -25,8 +25,12 @@ services:
     ports:
       - "8080:8080"
       - "8443:8443"
+      - "5000:5000"
+      - "5001:5001"
+
     volumes:
-      - "$PWD/samples/:/~/root/samples"
+      - "$PWD/samples/:/~/samples"
+      - "$PWD/README.md/:/~/README.md"
 
     # attach shell
     # docker ps

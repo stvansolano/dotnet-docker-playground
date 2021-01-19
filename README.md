@@ -109,3 +109,20 @@ docker run --name code-server \
 Optionally, build the image
 
 `docker build -f ".devcontainer/code-server.Dockerfile" -t stvansolano/code-server-docker:latest .`
+
+## Queries / Requests
+
+      ```
+      curl -o - "http://localhost:5000/api/hello"
+
+      curl -o - "http://localhost:5000/api/products"
+
+      curl -o - "http://localhost:5000/api/{topic}"
+      ```
+
+## Linux processes
+
+      ```
+      ps aux
+      killall dotnet
+      ```
