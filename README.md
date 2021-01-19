@@ -53,6 +53,11 @@
 
       docker exec -it [container-id] bash
 
+- SQL Server connection string:
+
+```
+Server=YOUR-IP,1433;Database=AdventureWorks;Integrated Security=False;User Id=sa;Password=YOUR-PASSWORD;MultipleActiveResultSets=True
+```
 > Linux/SQL Server commands:
       ```
       cat /etc/*release

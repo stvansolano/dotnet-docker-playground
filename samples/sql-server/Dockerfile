@@ -13,11 +13,13 @@ RUN ( /opt/mssql/bin/sqlservr --accept-eula & ) | grep -q "Service Broker manage
     && /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -i /usr/src/app/setup.sql \
     && pkill sqlservr 
 
+CMD /opt/mssql/bin/sqlservr
+
 # SQL Server on Linux: https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-2017
+# SQL Server + Docker: https://github.com/microsoft/mssql-docker/
 
 #### Docker commands
-# cd Server/sql_server/adventure_works
-# docker build --rm -t adventure_works:latest . 
+# docker build --rm -t stvansolano/adventure-works:latest . 
 # docker run -e 'ACCEPT_EULA=Y' -e 'SA_Password=Password.123' -p 1433:1433 --name=sql1 -d adventure_works:latest
 # docker logs -f 48505...
 # data source=localhost;initial catalog=Adventureworks;persist security info=True;user id=sa;password=Password.123;MultipleActiveResultSets=True;App=EntityFramework
