@@ -1,0 +1,30 @@
+name: Build and Push Docker Image CI
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+    - '.github/workflows/docker-ci-dotnet-backend.yml'
+    - 'samples/dotnet-backend/**'
+
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        username=stvansolano
+        docker login --username $tag --password ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+        image=$username/dotnet-web-api
+        tag=$(date +%s)
+        docker build . --file samples/dotnet-backend/Dockerfile --tag $image:$tag
+        echo $version
+        docker push $image:$tag
+        docker build . --file samples/dotnet-backend/Dockerfile --tag $image:latest
+        docker push $image:latest
