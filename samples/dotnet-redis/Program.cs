@@ -64,21 +64,21 @@ namespace Dotnet_Backend
                     });
                 });
 
-                endpoints.MapGet("/api/{topic:alpha}", async context =>
+                endpoints.MapGet("/api/{state:alpha}", async context =>
                 {
-                    var topic = (string)context.Request.RouteValues["topic"];
+                    var state = (string)context.Request.RouteValues["state"];
 
-                    if (string.IsNullOrEmpty(topic)){
+                    if (string.IsNullOrEmpty(state)){
                         context.Response.StatusCode = (int) System.Net.HttpStatusCode.BadRequest;
                         return;
                     }
                     using ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(Configuration.GetConnectionString("Redis"));
                     IDatabase db = redis.GetDatabase();
 
-                    string value = await db.StringGetAsync(topic);
+                    string value = await db.StringGetAsync(state);
                     await context.Response.WriteAsJsonAsync<object>(
                         new {
-                            topic = topic,
+                            state = state,
                             value = value
                     });
                 });
