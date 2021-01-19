@@ -94,6 +94,12 @@ Build & publish
 1) Run the container
 
 ```
+docker-compose -f data-playground.yml up -d 
+```
+
+or
+
+```
 docker run --name code-server \
   -p 8080:8080 \
   -p 8443:8443 \

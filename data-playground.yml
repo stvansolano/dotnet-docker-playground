@@ -29,8 +29,8 @@ services:
       - "5001:5001"
 
     volumes:
-      - "$PWD/samples/:/~/samples"
-      - "$PWD/README.md/:/~/README.md"
+      - "$PWD/samples/:/home/samples"
+      - "$PWD/README.md/:/home/README.md"
 
     # attach shell
     # docker ps
