@@ -25,12 +25,24 @@ services:
     ports:
       - "8080:8080"
       - "8443:8443"
-      - "5000:5000"
-      - "5001:5001"
 
     volumes:
-      - "$PWD/samples/:/home/samples"
-      - "$PWD/README.md/:/home/README.md"
+      - "$PWD/:/home/playground"
+      
+  dotnet-sql-server:
+    build:
+      context: .
+      dockerfile: samples/dotnet-sql-server/Dockerfile
+    ports:
+    - "5001:80"  
+    environment:
+      -  ASPNETCORE_URLS=http://+:80
+    command: |
+      - echo "ASP.NET Backend up and running!"
+    links:
+    - adventure-works-db
+    depends_on:
+    - adventure-works-db
 
     # attach shell
     # docker ps
