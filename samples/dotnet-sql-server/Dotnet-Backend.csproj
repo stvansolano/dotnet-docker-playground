@@ -12,7 +12,9 @@
   </ItemGroup>
 
     <!--
-    dotnet-ef dbcontext scaffold "data source=localhost;initial catalog=Adventureworks;persist security info=True;user id=sa;password=Password.123;MultipleActiveResultSets=True;App=EntityFramework" Microsoft.EntityFrameworkCore.SqlServer -o Models - -force
+    dotnet tool install dotnet-ef - -global
+    cd $HOME/dotnet/tools
+    dotnet ef dbcontext scaffold "data source=adventure-works-db;initial catalog=Adventureworks;persist security info=True;user id=sa;password=Password.123;MultipleActiveResultSets=True;App=EntityFramework" Microsoft.EntityFrameworkCore.SqlServer -o Data - -project /home/playground/samples/dotnet-sql-server/Dotnet-Backend.csproj
     -->
 
   <ItemGroup>

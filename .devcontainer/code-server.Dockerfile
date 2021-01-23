@@ -42,6 +42,8 @@ RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod
     dpkg -i packages-microsoft-prod.deb && apt-get update; \
     apt-get install -y dotnet-sdk-5.0
 
+RUN dotnet tool install dotnet-ef --tool-path $HOME/dotnet/tools
+
 # Code-server install
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 

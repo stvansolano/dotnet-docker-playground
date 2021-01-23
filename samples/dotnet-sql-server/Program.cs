@@ -9,8 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Core.Data;
 using Microsoft.EntityFrameworkCore;
+using AdventureWorksDbContext = Core.Data.AdventureWorksDbContext;
+//using AdventureWorksDbContext = Dotnet_Backend.Data.AdventureworksContext;
 
 namespace Dotnet_Backend
 {
