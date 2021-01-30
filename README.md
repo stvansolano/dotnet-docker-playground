@@ -137,3 +137,9 @@ Optionally, build the image
       ps aux
       killall dotnet
       ```
+
+## K3D commands
+
+```
+k3d cluster create mycluster \
+    && k3d kubeconfig merge mycluster --kubeconfig-switch-context
