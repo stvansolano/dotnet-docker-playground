@@ -62,6 +62,12 @@ namespace Dotnet_Backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapGet("/", context => {
+
+                    context.Response.Redirect("/swagger");
+                    return Task.CompletedTask;
+                });
             });
         }
     }
