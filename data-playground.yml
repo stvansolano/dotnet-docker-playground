@@ -20,14 +20,15 @@ services:
     volumes:
       - "~/data/${STACK_NAME}/redis:/data"
 
-  code-server:
-    image: stvansolano/code-server:latest
-    ports:
-      - "8080:8080"
-      - "8443:8443"
-
-    volumes:
-      - "$PWD/:/home/playground"
+  #-- skipping due size
+  #code-server:
+  #  image: stvansolano/code-server:latest
+  #  ports:
+  #    - "8080:8080"
+  #    - "8443:8443"
+  #
+  #  volumes:
+  #    - "$PWD/:/home/playground"
       
   dotnet-sql-server:
     build:
