@@ -28,7 +28,7 @@ services:
   dotnet-backend:
     build:
       context: .
-      dockerfile: samples/dotnet-backend/Dockerfile
+      dockerfile: samples/dotnet-swagger/Dockerfile
     ports:
     - "8083:80"
 

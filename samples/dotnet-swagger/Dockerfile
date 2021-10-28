@@ -7,10 +7,10 @@ EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["samples/dotnet-backend/Dotnet-Backend.csproj", "samples/dotnet-backend/"]
-RUN dotnet restore "samples/dotnet-backend/Dotnet-Backend.csproj"
+COPY ["./samples/dotnet-swagger/Dotnet-Backend.csproj", "samples/dotnet-swagger/"]
+RUN dotnet restore "samples/dotnet-swagger/Dotnet-Backend.csproj"
 COPY . .
-WORKDIR "/src/samples/dotnet-backend"
+WORKDIR "/src/samples/dotnet-swagger"
 RUN dotnet build "Dotnet-Backend.csproj" -c Release -o /app/build
 
 FROM build AS publish
@@ -20,3 +20,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Dotnet-Backend.dll"]
+
+# docker build -t dotnet-backend:latest -f samples/dotnet-swagger/Dockerfile .
+# docker run dotnet-backend:latest -d -p 5000:5000 -p 5001:5001 -p 80:80 -p 8080:8080
