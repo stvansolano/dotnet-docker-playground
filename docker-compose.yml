@@ -1,5 +1,4 @@
 version: '3.4'
-
 services:
   
   play-with-docker:
@@ -8,22 +7,25 @@ services:
     ports:
       - 8080:80
 
-  dotnet:
-    container_name: dotnet-dev
-    image: stvansolano/dotnet-codespace:3.1
-    ports:
-      - 5000:5000
-      - 5001:5001
-      - 8081:80
-
-  dotnet-webserver:
+  dotnet-sql-server:
     build:
       context: .
-      dockerfile: samples/dotnet-webserver/Dockerfile
+      dockerfile: samples/dotnet-sql-server/Dockerfile
+    ports:
+    - "8084:80"
+    links:
+    - adventure-works-db
+    depends_on:
+    - adventure-works-db
+
+  dotnet-frontend:
+    build:
+      context: .
+      dockerfile: samples/dotnet-frontend/Dockerfile
     ports:
     - "8082:80"
     environment:
-      -  ASPNETCORE_URLS=http://+:5000
+      -  ASPNETCORE_URLS=http://+:80
   
   dotnet-backend:
     build:
@@ -42,6 +44,14 @@ services:
     - adventure-works-db
     depends_on:
     - adventure-works-db
+
+#  dotnet:
+#    container_name: dotnet-dev
+#    image: stvansolano/dotnet-codespace:3.1
+#    ports:
+#      - 5000:5000
+#      - 5001:5001
+#      - 8081:80
 
   #### Data Containers
 
